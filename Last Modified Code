@@ -2,5 +2,6 @@ function onEdit(e) {
   // Set a comment on the edited cell to indicate when it was changed.
   var sheetX = SpreadsheetApp.getActiveSheet(); 
   const range = e.range;
-  range.setNote('Last modified: ' + new Date());
+  var user = Session.getActiveUser().getEmail(); 
+  range.setNote('Last modified by ' + user + ' at ' + new Date());
 }
