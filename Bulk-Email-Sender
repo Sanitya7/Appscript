@@ -1,0 +1,23 @@
+function sendEmail() {
+  const wsuser = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Users");
+  const wsemail = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Email");
+
+  let emailText = wsemail.getRange(1,1).getValue();
+  let lrow = wsuser.getLastRow();
+
+  for( let i = 2 ; i <= lrow ; i++ ){
+
+    let emailAddress = wsuser.getRange(i,3).getValue();
+    let name = wsuser.getRange(i,1).getValue();
+    let company = wsuser.getRange(i,5).getValue();
+    let email = emailText.replace("{Name}" , name).replace("{Company Name}", company );
+    let subject = "Unlock A Grade Speeds: Elevate " + company +" SEO & Site Performance";
+    //send Email 
+
+    MailApp.sendEmail(emailAddress,subject,email ); 
+  }
+
+  // Code Executed
+}
+
+// G-Sheet link : https://docs.google.com/spreadsheets/d/1WaD7-7fsFpBYJhmV140r4MRUIgn-sXgCOlrwFVfmxdM/edit#gid=0
