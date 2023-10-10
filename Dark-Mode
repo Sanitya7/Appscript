@@ -1,0 +1,8 @@
+function darkMode() {
+  SpreadsheetApp.getActive().getRange('A1:Z')
+    .setBackground("#333333")
+    .setFontColor("white")
+    .setFontFamily("Google Sans")
+    .setBorder(false,false,false,false,true,
+     true,"#444444",SpreadsheetApp.BorderStyle.SOLID)
+}
